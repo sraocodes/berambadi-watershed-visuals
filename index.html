@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berambadi Watershed Dashboard</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Plotly.js CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav">
+        <ul>
+            <li><a href="#soil-classification">🗺️ Soil</a></li>
+            <li><a href="#precipitation-data">🌧️ Precipitation</a></li>
+            <li><a href="#land-use">🌾 Land Use</a></li>
+            <li><a href="#soil-moisture">💧 Soil Moisture</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <h1>Berambadi Watershed Dashboard</h1>
+        <p>Comprehensive Environmental Data Analysis & Visualization</p>
+    </header>
+    <div class="header-meta" style="margin-top:.6rem; display:flex; justify-content:center; gap:1rem; font-size:0.95rem;">
+    <div style="background:#fff; padding:.4rem .6rem; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.06);">Static HTML — client side</div>
+    <div style="background:#fff; padding:.4rem .6rem; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.06);">Data: aggregated seasonal means</div>
+    <div style="background:#fff; padding:.4rem .6rem; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <a href="https://github.com/YOURUSER/YOURREPO" target="_blank" style="color:#2E86AB; text-decoration:none;">View on GitHub</a>
+    </div>
+    </div>
+
+
+    <!-- Full Width Content -->
+    <div class="full-width">
+        
+        <!-- Soil Classification Plot -->
+        <section class="plot-section" id="soil-classification">
+            <div class="section-header">
+                <h2>🗺️ Soil Classification Map</h2>
+                <div class="description">Field locations and soil type distribution across the watershed</div>
+            </div>
+
+            <!-- Interactive Map -->
+            <div class="plot-container">
+                <iframe src="soil_class.html"></iframe>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="summary-table">
+                <h3>Soil Classification Summary</h3>
+                <table>
+                    <tr><th>Soil Type</th><th>Count</th><th>%</th></tr>
+                    <tr><td>Red</td><td>20</td><td>27.4%</td></tr>
+                    <tr><td>Black mix</td><td>19</td><td>26.0%</td></tr>
+                    <tr><td>Black</td><td>17</td><td>23.3%</td></tr>
+                    <tr><td>Loam</td><td>15</td><td>20.5%</td></tr>
+                    <tr><td>Black Mix</td><td>1</td><td>1.4%</td></tr>
+                    <tr><td>Red Mix</td><td>1</td><td>1.4%</td></tr>
+                </table>
+            </div>
+            <div class="summary-note">
+                <p>
+                    ℹ️ Soil map shows field locations and major soil classes. Use the interactive map (open in the iframe) to zoom to specific plots.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- Precipitation Data Analysis -->
+        <section class="plot-section" id="precipitation-data">
+            <div class="section-header">
+                <h2>🌧️ Precipitation Summary</h2>
+                <div class="description">Annual rainfall trends and data coverage analysis (2016–2025)</div>
+            </div>
+
+            <div class="plot-container">
+                <!-- Embed the Plotly precipitation dashboard -->
+                <iframe src="precip_summary.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <div class="summary-note">
+                <p>
+                    ⚠️ Note: Years with coverage below 80% are marked as incomplete due to data collection gaps (e.g., COVID period in 2020).
+                </p>
+            </div>
+        </section>
+
+
+        <!--  Crop Distribution Patterns -->
+        <section class="plot-section" id="land-use">
+            <div class="section-header">
+                <h2>🌾 Crop Distribution</h2>
+                <div class="description">Year-by-year crop distribution (interactive). Use the buttons to switch years.</div>
+            </div>
+
+            <div class="plot-container">
+                <!-- Embed the Plotly crop distribution dashboard -->
+                <iframe src="crop_distribution.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <div class="summary-note">
+                <p>
+                    ℹ️ Note: Crops that individually contribute less than 3% are grouped as <strong>"Other"</strong> in the pie.
+                    The table on the right lists the small contributors. Adjust the threshold in the script if you want a stricter grouping.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Seasonal Soil Moisture Analysis -->
+        <section class="plot-section" id="soil-moisture">
+            <div class="section-header">
+                <h2>💧 Seasonal Soil Moisture Dynamics</h2>
+                <div class="description">
+                    Interactive soil moisture distribution across Kharif, Rabi, and Zaid seasons.
+                    Use the dropdown in the embedded map to switch seasons.
+                </div>
+            </div>
+
+            <!-- Embedded Plotly Map -->
+            <div class="plot-container">
+                <iframe 
+                    src="points_seasons_map.html" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
+            </div>
+
+            <div class="summary-note">
+                <p>
+                    🌍 This map visualizes seasonal variations in mean surface soil moisture
+                    across field plots in the Berambadi watershed. 
+                    Hover over points for plot-level details, or use the dropdown to explore different seasons.
+                </p>
+            </div>
+        </section>
+
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <p>
+            Created by 
+            <a href="https://www.drsrao.com" target="_blank">Dr.Sathyanarayan Rao</a> | 
+            Work in Progress <br>
+            Acknowledgement: 
+            <a href="https://civil.iisc.ac.in/~muddu/" target="_blank">Prof. Shekhar Muddu</a>, 
+            Indian Institute of Science, Civil Engineering
+        </p>
+    </footer>
+
+
+    <!-- JavaScript for dynamic functionality -->
+    <script>
+        // Function to dynamically load plot iframes
+        function loadPlot(sectionId, htmlFile) {
+            const container = document.querySelector(`#${sectionId} .plot-container`);
+            const iframe = document.createElement('iframe');
+            iframe.src = htmlFile;
+            iframe.width = '100%';
+            iframe.height = '100%';
+            iframe.frameBorder = '0';
+            iframe.setAttribute('scrolling', 'no');
+            iframe.style.margin = '0';
+            iframe.style.padding = '0';
+            
+            // Replace loading placeholder
+            container.innerHTML = '';
+            container.appendChild(iframe);
+        }
+
+        // Example usage - uncomment when files are ready:
+        // loadPlot('climate-data', 'climate_analysis.html');
+        // loadPlot('water-quality', 'water_quality.html');
+        // loadPlot('land-use', 'land_use.html');
+        // loadPlot('hydrology', 'hydrology.html');
+
+        // Smooth scrolling for navigation links (if you add them)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Optional: Add loading animation when iframes load
+        document.querySelectorAll('iframe').forEach(iframe => {
+            iframe.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.3s ease';
+        });
+
+        // Highlight active nav item on scroll
+        window.addEventListener("scroll", function() {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120; // adjust for header height
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
